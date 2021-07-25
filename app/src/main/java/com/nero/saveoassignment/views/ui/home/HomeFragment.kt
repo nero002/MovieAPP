@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nero.saveoassignment.data.model.MovieResponseItem
@@ -18,8 +19,10 @@ import com.nero.saveoassignment.databinding.FragmentHomeBinding
 import com.nero.saveoassignment.viewmodel.MovieViewModel
 import com.nero.saveoassignment.views.ui.home.rvHorizontal.HorizontalMovieAdapter
 import com.nero.saveoassignment.views.ui.home.rvVertical.MovieAdapter
+import com.skydoves.transformationlayout.onTransformationStartContainer
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import java.util.*
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(), MovieClickListener {
@@ -35,6 +38,10 @@ class HomeFragment : Fragment(), MovieClickListener {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        onTransformationStartContainer()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -52,6 +59,7 @@ class HomeFragment : Fragment(), MovieClickListener {
         navController = Navigation.findNavController(view)
         verticalRV()
         horizontalRV()
+
 
     }
 
@@ -99,7 +107,14 @@ class HomeFragment : Fragment(), MovieClickListener {
 
 
     override fun onMovieClicked(movieResponse: MovieResponseItem) {
-        val action = HomeFragmentDirections.actionNavHomeToMovieDetailsFragment(movieResponse)
+
+//        val extras = FragmentNavigatorExtras(imageView to "imageView")
+        val action = HomeFragmentDirections.actionNavHomeToMovieDetailsFragment(
+            movieResponse,
+        )
+
         navController.navigate(action)
+
+
     }
 }

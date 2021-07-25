@@ -1,24 +1,20 @@
 package com.nero.saveoassignment.views.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
-import com.nero.saveoassignment.R
-import com.nero.saveoassignment.databinding.FragmentHomeBinding
 import com.nero.saveoassignment.databinding.FragmentMovieDetailsBinding
-import com.nero.saveoassignment.viewmodel.MovieViewModel
+import com.nero.saveoassignment.utils.formatHourMinutes
 
 class MovieDetailsFragment : Fragment() {
 
     private lateinit var navController: NavController
-    private val viewModel: MovieViewModel by viewModels()
     private var _binding: FragmentMovieDetailsBinding? = null
     private val binding get() = _binding!!
 
@@ -41,21 +37,26 @@ class MovieDetailsFragment : Fragment() {
         val args by navArgs<MovieDetailsFragmentArgs>()
         val movieResponse = args.movieDetailsArgs
 
+
         binding.apply {
             tvMovieName.text = movieResponse.name
-            tvTime.text = movieResponse.runtime.toString()
-            tvSysnopsis.text = movieResponse.name
-            tvSynopsisData.text = movieResponse.summary
-
+            tvTime.text =
+                movieResponse.runtime.formatHourMinutes() + " | " + movieResponse.premiered
+            tvSynopsisData.text = movieResponse.summary.replace("\\<.*?\\>", "")
 
             try {
                 tvDrama.text = movieResponse.genres[0]
-                tvCrime.text = movieResponse.genres[1].toString()
+                tvCrime.text = movieResponse.genres[1]
                 tvMystry.text = movieResponse.genres[2]
             } catch (e: Exception) {
 
             }
             Glide.with(ivMovieThumbnail).load(movieResponse.image.original).into(ivMovieThumbnail)
+
+            tvReview10.text = "Reviews :" + movieResponse.rating.average.toString()
+            tvRatings.rating = movieResponse.rating.average.toFloat().div(2) ?: 0.0f
+            tvRatingNumber.text = movieResponse.rating.average.toString()
+
         }
 
     }

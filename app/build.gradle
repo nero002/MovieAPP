@@ -88,4 +88,8 @@ dependencies {
     //Paging
     def paging_version = "3.0.0"
     implementation "androidx.paging:paging-runtime-ktx:$paging_version"
+
+    //transition
+    implementation "com.github.skydoves:transformationlayout:1.1.0"
+
 }

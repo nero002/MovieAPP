@@ -19,57 +19,26 @@
         app:layout_constraintVertical_bias="1.0"
         tools:layout_editor_absoluteX="-146dp">
 
-        <ImageButton
-            android:id="@+id/btnBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_20sdp"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:background="@color/detailsBack"
-            android:src="@drawable/ic_baseline_arrow_back_ios_24"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tvMovieHeader"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/detailsBack"
-            android:text="@string/movie"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_20sdp"
-            app:layout_constraintBottom_toBottomOf="@+id/btnBack"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/btnBack"
-            app:layout_constraintTop_toTopOf="@id/btnBack" />
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/_20sdp"
-            android:background="@color/detailsBack"
-            android:src="@drawable/ic_baseline_exit_to_app_24"
-            app:layout_constraintBottom_toBottomOf="@+id/tvMovieHeader"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tvMovieHeader" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardMovieThumbnail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_3sdp"
-            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_20sdp"
             android:elevation="@dimen/_40sdp"
             app:cardCornerRadius="@dimen/_20sdp"
             app:cardMaxElevation="@dimen/_20sdp"
-            app:layout_constraintStart_toStartOf="@id/btnBack"
-            app:layout_constraintTop_toBottomOf="@id/btnBack">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/ivMovieThumbnail"
                 android:layout_width="@dimen/_110sdp"
                 android:layout_height="@dimen/_180sdp"
-                android:transitionName="image_transition" />
+                android:scaleType="centerCrop"
+                android:transitionName="imageView"
+                android:translationZ="100dp" />
         </androidx.cardview.widget.CardView>
 
         <TextView
@@ -77,13 +46,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_20sdp"
             android:background="@color/detailsBack"
             android:text="@string/sample_movie_name"
             android:textColor="@color/white"
             android:textSize="@dimen/_15sdp"
             app:layout_constraintStart_toEndOf="@id/cardMovieThumbnail"
-            app:layout_constraintTop_toBottomOf="@id/tvMovieHeader" />
+            app:layout_constraintTop_toTopOf="@+id/cardMovieThumbnail" />
 
         <TextView
             android:id="@+id/tvTime"
@@ -119,7 +87,7 @@
             android:layout_marginLeft="5dp"
             android:background="@drawable/round_shape"
             android:padding="@dimen/_7sdp"
-            android:text="MYSTERY"
+            android:text="Drama"
             android:textColor="@color/white"
             android:textSize="@dimen/_7sdp"
             app:layout_constraintStart_toEndOf="@+id/tvCrime"
@@ -132,7 +100,7 @@
             android:layout_marginLeft="5dp"
             android:background="@drawable/round_shape"
             android:padding="@dimen/_7sdp"
-            android:text="MYSTERY"
+            android:text="Crime"
             android:textColor="@color/white"
             android:textSize="@dimen/_7sdp"
             app:layout_constraintStart_toEndOf="@+id/tvMystry"
@@ -153,6 +121,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tvMystry" />
 
         <TextView
+            android:id="@+id/tvRatingNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
@@ -206,6 +175,7 @@
             android:paddingBottom="@dimen/_10sdp"
             android:text="BOOK NOW"
             android:textColor="@color/app_background" />
+
     </androidx.cardview.widget.CardView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -221,7 +191,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_20sdp"
-            android:layout_marginTop="@dimen/_50sdp"
+            android:layout_marginTop="@dimen/_30sdp"
             android:background="@color/white"
             android:text="Synopsis"
             android:textColor="@color/black"
