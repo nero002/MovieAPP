@@ -22,9 +22,9 @@ class MoviePagingSource(
         return try {
             val response = movieClient.movieList(postion)
             LoadResult.Page(
-                data = response.movieResponse!!,
+                data = response,
                 prevKey = if (postion == START_PAGE) null else postion - 1,
-                nextKey = if (response.movieResponse.isEmpty()) null else postion + 1
+                nextKey = if (response.isEmpty()) null else postion + 1
             )
         } catch (e: Exception) {
             LoadResult.Error(e)
