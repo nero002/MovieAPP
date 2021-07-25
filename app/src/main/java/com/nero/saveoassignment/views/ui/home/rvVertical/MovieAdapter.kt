@@ -1,4 +1,4 @@
-package com.nero.saveoassignment.views.ui.home.rv
+package com.nero.saveoassignment.views.ui.home.rvVertical
 
 import android.view.LayoutInflater
 import android.view.View

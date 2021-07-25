@@ -11,11 +11,13 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.nero.saveoassignment.data.model.MovieResponseItem
 import com.nero.saveoassignment.data.remote.MovieClickListener
 import com.nero.saveoassignment.databinding.FragmentHomeBinding
 import com.nero.saveoassignment.viewmodel.MovieViewModel
-import com.nero.saveoassignment.views.ui.home.rv.MovieAdapter
+import com.nero.saveoassignment.views.ui.home.rvHorizontal.HorizontalMovieAdapter
+import com.nero.saveoassignment.views.ui.home.rvVertical.MovieAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -28,6 +30,7 @@ class HomeFragment : Fragment(), MovieClickListener {
     val viewModel: MovieViewModel by viewModels()
     private lateinit var movieAdapter: MovieAdapter
     private lateinit var navController: NavController
+    private lateinit var horizontalMovieAdapter: HorizontalMovieAdapter
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -47,15 +50,37 @@ class HomeFragment : Fragment(), MovieClickListener {
         super.onViewCreated(view, savedInstanceState)
 
         navController = Navigation.findNavController(view)
+        verticalRV()
+        horizontalRV()
+
+    }
+
+    private fun horizontalRV() {
+        val llManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        horizontalMovieAdapter = HorizontalMovieAdapter(movieList, this)
+
+        binding.rvHorizontal.apply {
+            layoutManager = llManager
+            adapter = horizontalMovieAdapter
+        }
+
+
+        viewModel.movie().observe(viewLifecycleOwner, Observer {
+            movieList.addAll(it)
+            horizontalMovieAdapter.notifyDataSetChanged()
+        })
+
+
+    }
+
+    private fun verticalRV() {
         val llManager = GridLayoutManager(requireContext(), 3)
         binding.rvMovies.layoutManager = llManager
         movieAdapter = MovieAdapter(this)
 
         viewModel.movie.observe(viewLifecycleOwner, Observer {
             viewLifecycleOwner.lifecycleScope.launch {
-
                 movieAdapter.submitData(it)
-
             }
         })
 
@@ -72,7 +97,9 @@ class HomeFragment : Fragment(), MovieClickListener {
         _binding = null
     }
 
-    override fun onMovieClicked(movieResponse: Int?) {
-        TODO("Not yet implemented")
+
+    override fun onMovieClicked(movieResponse: MovieResponseItem) {
+        val action = HomeFragmentDirections.actionNavHomeToMovieDetailsFragment(movieResponse)
+        navController.navigate(action)
     }
 }

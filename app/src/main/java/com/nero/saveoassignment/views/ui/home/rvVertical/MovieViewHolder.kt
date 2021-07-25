@@ -1,4 +1,4 @@
-package com.nero.saveoassignment.views.ui.home.rv
+package com.nero.saveoassignment.views.ui.home.rvVertical
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
@@ -12,14 +12,16 @@ class MovieViewHolder(
     private val movieClickListener: MovieClickListener
 ) : RecyclerView.ViewHolder(itemView) {
     val binding = ItemLayoutBinding.bind(itemView)
+
     fun setMovieData(movieRepository: MovieResponseItem) {
+
         binding.apply {
 
             Glide.with(ivMoviePoster).load(movieRepository.image.original).into(ivMoviePoster)
 
 
             cvMovie.setOnClickListener {
-                movieClickListener.onMovieClicked(movieRepository.id)
+                movieClickListener.onMovieClicked(movieRepository)
             }
         }
 

@@ -1,9 +1,12 @@
 package com.nero.saveoassignment.data.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+import java.io.Serializable
+@Parcelize
 data class MovieResponseItem(
     val _links: Links,
     val averageRuntime: Int,
-    val dvdCountry: Any,
     val externals: Externals,
     val genres: List<String>,
     val id: Int,
@@ -23,4 +26,4 @@ data class MovieResponseItem(
     val url: String,
     val webChannel: WebChannel,
     val weight: Int
-)
+): Parcelable
