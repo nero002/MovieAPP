@@ -1,4 +1,5 @@
 package com.nero.saveoassignment.views
+
 import android.os.Bundle
 import android.view.Menu
 import com.google.android.material.snackbar.Snackbar
@@ -10,8 +11,10 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import com.nero.saveoassignment.R
 import com.nero.saveoassignment.databinding.ActivityMovieBinding
+import com.skydoves.transformationlayout.onTransformationStartContainer
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -22,10 +25,9 @@ class MovieActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        onTransformationStartContainer()
         binding = ActivityMovieBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         setSupportActionBar(binding.appBarMovie.toolbar)
 
 
@@ -48,6 +50,8 @@ class MovieActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.movie, menu)
         return true
     }
+
+    var resourceBundle = FragmentNavigatorExtras()
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_movie)

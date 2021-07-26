@@ -26,6 +26,9 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_nav_home_to_detailsActivity"
+            app:destination="@id/detailsActivity" />
     </fragment>
 
 
@@ -55,6 +58,15 @@
             app:popEnterAnim="@animator/nav_default_pop_enter_anim"
             app:popExitAnim="@animator/nav_default_pop_exit_anim" />
     </fragment>
+    <activity
+        android:id="@+id/detailsActivity"
+        android:name="com.nero.saveoassignment.views.DetailsActivity"
+        android:label="activity_details"
+        tools:layout="@layout/activity_details" >
+        <argument
+            android:name="movieDetailsArgs"
+            app:argType="com.nero.saveoassignment.data.model.MovieResponseItem" />
+    </activity>
 
 
 </navigation>

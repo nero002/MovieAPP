@@ -6,7 +6,6 @@ import com.bumptech.glide.Glide
 import com.nero.saveoassignment.data.model.MovieResponseItem
 import com.nero.saveoassignment.data.remote.MovieClickListener
 import com.nero.saveoassignment.databinding.HorizontalMovieItemViewBinding
-import com.nero.saveoassignment.databinding.ItemLayoutBinding
 
 class HorizontalMovieViewHolder(
     private val itemView: View,
@@ -21,9 +20,7 @@ class HorizontalMovieViewHolder(
             Glide.with(ivMoviePosterHorizontal).load(movieRepository.image.original).into(ivMoviePosterHorizontal)
 
 
-            cvMovieHorizontal.setOnClickListener {
-                movieClickListener.onMovieClicked(movieRepository)
-            }
+
         }
 
 

@@ -20,13 +20,14 @@
         tools:layout_editor_absoluteX="-146dp">
 
 
-        <androidx.cardview.widget.CardView
+        <com.skydoves.transformationlayout.TransformationLayout
             android:id="@+id/cardMovieThumbnail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_20sdp"
             android:layout_marginTop="@dimen/_20sdp"
             android:elevation="@dimen/_40sdp"
+            android:transitionName="imageView"
             app:cardCornerRadius="@dimen/_20sdp"
             app:cardMaxElevation="@dimen/_20sdp"
             app:layout_constraintStart_toStartOf="parent"
@@ -37,9 +38,8 @@
                 android:layout_width="@dimen/_110sdp"
                 android:layout_height="@dimen/_180sdp"
                 android:scaleType="centerCrop"
-                android:transitionName="imageView"
                 android:translationZ="100dp" />
-        </androidx.cardview.widget.CardView>
+        </com.skydoves.transformationlayout.TransformationLayout>
 
         <TextView
             android:id="@+id/tvMovieName"

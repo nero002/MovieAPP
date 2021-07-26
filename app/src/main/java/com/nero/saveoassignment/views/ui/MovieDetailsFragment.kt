@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
+import androidx.transition.ChangeBounds
 import com.bumptech.glide.Glide
 import com.nero.saveoassignment.R
 import com.nero.saveoassignment.databinding.FragmentMovieDetailsBinding
@@ -26,10 +27,7 @@ class MovieDetailsFragment : Fragment() {
 
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.exit_button, menu)
 
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,6 +46,7 @@ class MovieDetailsFragment : Fragment() {
         val args by navArgs<MovieDetailsFragmentArgs>()
         val movieResponse = args.movieDetailsArgs
         val summary: String = Jsoup.parse(movieResponse.summary).text()
+
 
         binding.apply {
             tvMovieName.text = movieResponse.name

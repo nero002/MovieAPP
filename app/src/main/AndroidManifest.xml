@@ -23,7 +23,6 @@
             android:name=".views.MovieActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.SaveoAssignment.NoActionBar" />
-
     </application>
 
 </manifest>
