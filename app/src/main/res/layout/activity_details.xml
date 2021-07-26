@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:weightSum="2"
+    tools:context=".views.DetailsActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clMovieReview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/detailsBack"
+        app:layout_constraintBottom_toTopOf="@+id/viewMiddle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:layout_editor_absoluteX="-146dp">
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardMovieThumbnail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:elevation="@dimen/_40sdp"
+            app:cardCornerRadius="@dimen/_20sdp"
+            app:cardMaxElevation="@dimen/_20sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/ivMovieThumbnail"
+                android:layout_width="@dimen/_110sdp"
+                android:layout_height="@dimen/_180sdp"
+                android:scaleType="centerCrop"
+                android:transitionName="imageView"
+                android:translationZ="100dp" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tvMovieName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:background="@color/detailsBack"
+            android:text="@string/sample_movie_name"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_15sdp"
+            app:layout_constraintStart_toEndOf="@id/cardMovieThumbnail"
+            app:layout_constraintTop_toTopOf="@+id/cardMovieThumbnail" />
+
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@color/detailsBack"
+            android:text="R | 3h 7min | 30 Dec,2015"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="@id/tvMovieName"
+            app:layout_constraintStart_toStartOf="@+id/tvMovieName"
+            app:layout_constraintTop_toBottomOf="@+id/tvMovieName" />
+
+
+        <TextView
+            android:id="@+id/tvCrime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/round_shape"
+            android:padding="@dimen/_7sdp"
+            android:text="MYSTERY"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_7sdp"
+            app:layout_constraintStart_toEndOf="@+id/cardMovieThumbnail"
+            app:layout_constraintTop_toBottomOf="@+id/tvTime" />
+
+        <TextView
+            android:id="@+id/tvMystry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/round_shape"
+            android:padding="@dimen/_7sdp"
+            android:text="Drama"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_7sdp"
+            app:layout_constraintStart_toEndOf="@+id/tvCrime"
+            app:layout_constraintTop_toTopOf="@+id/tvCrime" />
+
+        <TextView
+            android:id="@+id/tvDrama"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/round_shape"
+            android:padding="@dimen/_7sdp"
+            android:text="Crime"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_7sdp"
+            app:layout_constraintStart_toEndOf="@+id/tvMystry"
+            app:layout_constraintTop_toTopOf="@+id/tvMystry" />
+
+        <RatingBar
+            android:id="@+id/tvRatings"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:background="@color/detailsBack"
+            android:numStars="0"
+            android:progressTint="@color/white"
+            android:stepSize="0.5"
+            app:layout_constraintEnd_toStartOf="@+id/tvDrama"
+            app:layout_constraintStart_toStartOf="@+id/tvCrime"
+            app:layout_constraintTop_toBottomOf="@+id/tvMystry" />
+
+        <TextView
+            android:id="@+id/tvRatingNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:background="@color/detailsBack"
+            android:text="4.5"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/tvRatings"
+            app:layout_constraintStart_toEndOf="@+id/tvRatings"
+            app:layout_constraintTop_toTopOf="@+id/tvRatings" />
+
+        <TextView
+            android:id="@+id/tvReview10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:background="@color/detailsBack"
+            android:text="Reviews : 10"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="@+id/tvCrime"
+            app:layout_constraintTop_toBottomOf="@+id/tvRatings" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/viewMiddle"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardBookNow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:background="@color/white"
+        android:elevation="@dimen/_40sdp"
+        app:cardCornerRadius="@dimen/_20sdp"
+        app:cardMaxElevation="@dimen/_20sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:letterSpacing="0.5"
+            android:paddingStart="@dimen/_20sdp"
+            android:paddingTop="@dimen/_10sdp"
+            android:paddingEnd="@dimen/_20sdp"
+            android:paddingBottom="@dimen/_10sdp"
+            android:text="BOOK NOW"
+            android:textColor="@color/app_background" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/white"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/clMovieReview">
+
+        <TextView
+            android:id="@+id/tvSysnopsis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:background="@color/white"
+            android:text="Synopsis"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_15sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvSynopsisData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp"
+            android:background="@color/white"
+            android:text="afdnwejoighwoeirwripoweri"
+            app:layout_constraintTop_toBottomOf="@+id/tvSysnopsis" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
