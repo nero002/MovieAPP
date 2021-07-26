@@ -57,12 +57,16 @@ class HomeFragment : Fragment(), MovieClickListener {
         super.onViewCreated(view, savedInstanceState)
 
         navController = Navigation.findNavController(view)
+
         verticalRV()
         horizontalRV()
 
 
     }
 
+
+
+    //observing  & setting up a data for horizontal RecyclerView
     private fun horizontalRV() {
         val llManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         horizontalMovieAdapter = HorizontalMovieAdapter(movieList, this)
@@ -74,6 +78,13 @@ class HomeFragment : Fragment(), MovieClickListener {
 
 
         viewModel.movie().observe(viewLifecycleOwner, Observer {
+
+            //shrimming effect
+            binding.apply {
+                shimmerFrameLayoutHorizontal.stopShimmerAnimation()
+                shimmerFrameLayoutHorizontal.visibility = View.GONE
+                rvHorizontal.visibility = View.VISIBLE
+            }
             movieList.addAll(it)
             horizontalMovieAdapter.notifyDataSetChanged()
         })
@@ -81,6 +92,7 @@ class HomeFragment : Fragment(), MovieClickListener {
 
     }
 
+    //observing  & setting a data for Vertical RecyclerView
     private fun verticalRV() {
         val llManager = GridLayoutManager(requireContext(), 3)
         binding.rvMovies.layoutManager = llManager
@@ -95,10 +107,17 @@ class HomeFragment : Fragment(), MovieClickListener {
         binding.rvMovies.adapter = movieAdapter
 
         viewModel.movie().observe(viewLifecycleOwner, Observer {
+            //shrimming effect
+            binding.apply {
+                shimmerFrameLayoutVertical.stopShimmerAnimation()
+                shimmerFrameLayoutVertical.visibility = View.GONE
+                rvMovies.visibility = View.VISIBLE
+            }
             movieList.addAll(it)
             movieAdapter.notifyDataSetChanged()
         })
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -106,9 +125,9 @@ class HomeFragment : Fragment(), MovieClickListener {
     }
 
 
+    //sending the movieResponse details on click of movie
     override fun onMovieClicked(movieResponse: MovieResponseItem) {
 
-//        val extras = FragmentNavigatorExtras(imageView to "imageView")
         val action = HomeFragmentDirections.actionNavHomeToMovieDetailsFragment(
             movieResponse,
         )
@@ -117,4 +136,6 @@ class HomeFragment : Fragment(), MovieClickListener {
 
 
     }
+
+
 }
